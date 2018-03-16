@@ -8,11 +8,13 @@ const CHAR_SUFFIXES = {
 class DigitalClock {
     /**
      * @param {string|Element} elem         HTML element (or selector) to render the clock
+     * @param {{ color: string, fontSize: string }} style
      */
-    constructor(elem) {
+    constructor(elem, style = {}) {
         this.rootElem = null;
         this.charElems = [];
         this.text = '';
+        this.style = {};
 
         if (typeof elem === 'string') {
             this.rootElem = document.querySelector(elem);
@@ -28,9 +30,14 @@ class DigitalClock {
         if (!this.rootElem.classList.contains('digital-clock')) {
             this.rootElem.classList.add('digital-clock');
         }
+
+        this.setStyle(style);
     }
 
 
+    /**
+     * @param {string|number} text
+     */
     setText(text) {
         if (!this.rootElem) {
             throw new Error('Digital Clock is not initialized');
@@ -53,6 +60,15 @@ class DigitalClock {
     }
 
 
+    /**
+     * @param {{ [color]: string, [fontSize]: string }} style
+     */
+    setStyle(style) {
+        this.style = Object.assign({ color: '#000', fontSize: '5em' }, this.style, style);
+        const { color, fontSize } = this.style;
+        this.rootElem.style.setProperty('--color', color);
+        this.rootElem.style.setProperty('--font-size', fontSize);
+    }
 }
 
 

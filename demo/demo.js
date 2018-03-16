@@ -72,14 +72,20 @@ function runDemo() {
                 applyMode(modeSelector.value);
             }
         });
-        // modeSelector.addEventListener('focus', (e) => {
-        //     if (modeSelector.checked) {
-        //         applyMode(modeSelector.value);
-        //     }
-        // });
 
         if (modeSelector.checked) {
             applyMode(modeSelector.value);
         }
+    });
+
+
+    const fontSizeSelectorElem = document.querySelector('#font-size');
+    fontSizeSelectorElem.addEventListener('input', () => {
+        clock.setStyle({ fontSize: `${fontSizeSelectorElem.value}em` });
+    });
+
+    const colorSelectorElem = document.querySelector('#color');
+    colorSelectorElem.addEventListener('input', () => {
+        clock.setStyle({ color: colorSelectorElem.value });
     });
 }

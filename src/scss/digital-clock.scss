@@ -1,4 +1,8 @@
 .digital-clock {
+  // configurable
+  --color: #000;
+  --font-size: 5em;
+
   box-sizing: border-box;
 
 
@@ -7,6 +11,7 @@
     display: inline-block;
     width: 1em;
     height: 2em;
+    font-size: var(--font-size);
 
     margin-right: .25em;
 
@@ -36,7 +41,7 @@
       list-style-type: none;
       margin: 0;
       padding: 0;
-      background-color: hsla(220, 20%, 60%, .5);
+      background-color: var(--color);
       transform: scale(0, 0);
       transition: transform 150ms ease;
 
@@ -210,10 +215,4 @@
       & > li:nth-child(5) { transform: scale(1, 1); }
     }
   }
-}
-
-
-// configurable
-.digital-clock > .char {
-  font-size: 5em;
 }
