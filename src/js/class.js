@@ -70,7 +70,7 @@ function _getDigitElem(idx, charElems, rootElem) {
         charElems.push(charElem);
     }
 
-    return this.charElems[idx];
+    return charElems[idx];
 }
 
 

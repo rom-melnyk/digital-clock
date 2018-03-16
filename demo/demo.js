@@ -6,27 +6,17 @@ function runDemo() {
         UserInput: 'user-input'
     };
     let currentMode;
-
-
-    const modeSelectorElems = Array.from( document.getElementsByName('mode') );
-    modeSelectorElems.forEach((modeSelector) => {
-        modeSelector.addEventListener('change', (e) => {
-            if (e.checked || e.selected) {
-                applyMode(modeSelector.value);
-            }
-        });
-
-        if (modeSelector.checked) {
-            applyMode(modeSelector.value);
-        }
-    });
+    let intervalId = null;
+    const AVAILABLE_CHARS = '0123456789-:ap';
 
 
     const clock = new DigitalClock('.digital-clock');
     const userInputElem = document.getElementById('user-input');
-
-    let intervalId = null;
-    const AVAILABLE_CHARS = '0123456789-:ap';
+    userInputElem.addEventListener('input', () => {
+        if (currentMode === MODES.UserInput) {
+            clock.setText(userInputElem.value);
+        }
+    });
 
 
     function applyMode(mode) {
@@ -73,4 +63,23 @@ function runDemo() {
     function runUserInputMode() {
         clock.setText(userInputElem.value);
     }
+
+
+    const modeSelectorElems = Array.from( document.getElementsByName('mode') );
+    modeSelectorElems.forEach((modeSelector) => {
+        modeSelector.addEventListener('click', (e) => {
+            if (modeSelector.checked) {
+                applyMode(modeSelector.value);
+            }
+        });
+        // modeSelector.addEventListener('focus', (e) => {
+        //     if (modeSelector.checked) {
+        //         applyMode(modeSelector.value);
+        //     }
+        // });
+
+        if (modeSelector.checked) {
+            applyMode(modeSelector.value);
+        }
+    });
 }

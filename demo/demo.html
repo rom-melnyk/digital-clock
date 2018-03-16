@@ -10,7 +10,7 @@
     <script type="application/javascript" src="../bin/digital-clock.min.js"></script>
     <script type="application/javascript" src="./demo.js"></script>
 </head>
-<body onload="runApp();">
+<body onload="runDemo();">
     <h1>Digital Clock</h1>
     <h2>This is font for using in digital clock</h2>
     <p>Git: <a href="https://github.com/rom-melnyk/digital-clock">https://github.com/rom-melnyk/digital-clock</a></p>
@@ -18,10 +18,13 @@
     <p>
         <input type="radio" name="mode" id="mode-random" value="random" checked>
         <label for="mode-random">random</label>
+
         <input type="radio" name="mode" id="mode-clock" value="clock">
         <label for="mode-clock">clock</label>
+
         <input type="radio" name="mode" id="mode-input" value="user-input">
         <label for="mode-input">input</label>
+
         <input type="text" id="user-input" placeholder="Your text...">
     </p>
     <div class="digital-clock"></div>
