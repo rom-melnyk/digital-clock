@@ -23,7 +23,11 @@ class DigitalClock {
         if (!this.rootElem) {
             throw new Error(`Cannot initialize Digital Clock on ${elem}`);
         }
+
         this.rootElem.innerHTML = '';
+        if (!this.rootElem.classList.contains('digital-clock')) {
+            this.rootElem.classList.add('digital-clock');
+        }
     }
 
 
@@ -35,7 +39,7 @@ class DigitalClock {
         this.text = '';
         const chars = Array.from(`${text}`).filter(ch => AVAILABLE_CHARS.test(ch));
         chars.forEach((ch, idx) => {
-            const elem = _getDigitElem(idx, this.rootElem, this.charElems);
+            const elem = _getDigitElem(idx, this.charElems, this.rootElem);
             const suffix = CHAR_SUFFIXES[ch] || ch;
             elem.className = `char ch-${suffix}`;
             this.text += ch;
@@ -43,8 +47,8 @@ class DigitalClock {
 
         // hiding extra chars
         for (let i = chars.length; i < this.charElems.length; i++) {
-            const elem = _getDigitElem(i, this.rootElem, this.charElems);
-            elem.className = `char hidden`;
+            const elem = _getDigitElem(i, this.charElems, this.rootElem);
+            elem.className = 'char hidden';
         }
     }
 
@@ -52,7 +56,7 @@ class DigitalClock {
 }
 
 
-function _getDigitElem(idx, rootElem, charElems) {
+function _getDigitElem(idx, charElems, rootElem) {
     if (idx >= charElems.length) {
         const charElem = document.createElement('div');
         charElem.className = 'char';
