@@ -1,10 +1,16 @@
 const gulp = require('gulp');
 const rename = require('gulp-rename');
+const del = require('del');
+
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
 const sourcemaps = require('gulp-sourcemaps');
+const gutil = require('gulp-util');
+
+const browserify = require('browserify');
 const sass = require('gulp-sass');
 const uglify = require('uglify-es');
 const composer = require('gulp-uglify/composer');
-const del = require('del');
 
 const NAME = require('./package.json').name;
 const DEST = 'bin/';
@@ -36,22 +42,35 @@ gulp.task('css:prod', [ 'clean:css' ],  () => {
 
 /** @subtasks-group JS */
 gulp.task('js:dev', [ 'clean:js' ],  () => {
-    return gulp.src(`src/js/${NAME}.js`)
-        .pipe(sourcemaps.init())
+    const b = browserify({
+        entries: `src/js/${NAME}.js`,
+        debug: true
+    });
+
+    return b.bundle()
+        .pipe(source(`${NAME}.min.js`))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(sourcemaps.write())
-        .pipe(rename({ extname: '.min.js' }))
         .pipe(gulp.dest(DEST));
 });
 
 gulp.task('js:prod', [ 'clean:js' ],  () => {
-    return gulp.src(`src/js/${NAME}.js`)
+    const b = browserify({
+        entries: `src/js/${NAME}.js`
+    });
+
+    return b.bundle()
+            .on('error', gutil.log)
+        .pipe(source(`${NAME}.min.js`))
+        .pipe(buffer())
         .pipe(minify())
-            .on('error', (e) => console.error('UglifyES error: ', e))
-        .pipe(rename({ extname: '.min.js' }))
+            .on('error', gutil.log)
         .pipe(gulp.dest(DEST));
 });
 
 
+/** @tasks-group */
 gulp.task('dev', [ 'css:dev', 'js:dev' ], () => {
     gulp.watch('src/scss/**/*', [ 'css:dev' ]);
     gulp.watch('src/js/**/*', [ 'js:dev' ]);

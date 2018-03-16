@@ -2,7 +2,7 @@
   box-sizing: border-box;
 
 
-  .digit {
+  .char {
     position: relative;
     display: inline-block;
     width: 1em;
@@ -118,7 +118,7 @@
     }
 
 
-    &.d-0 {
+    &.ch-0 {
       & > li:nth-child(1),
       & > li:nth-child(2),
       & > li:nth-child(3),
@@ -126,38 +126,38 @@
       & > li:nth-child(6),
       & > li:nth-child(7) { transform: scale(1, 1); }
     }
-    &.d-1 {
+    &.ch-1 {
       & > li:nth-child(3),
       & > li:nth-child(6) { transform: scale(1, 1); }
     }
-    &.d-2 {
+    &.ch-2 {
       & > li:nth-child(1),
       & > li:nth-child(3),
       & > li:nth-child(4),
       & > li:nth-child(5),
       & > li:nth-child(7) { transform: scale(1, 1); }
     }
-    &.d-3 {
+    &.ch-3 {
       & > li:nth-child(1),
       & > li:nth-child(3),
       & > li:nth-child(4),
       & > li:nth-child(6),
       & > li:nth-child(7) { transform: scale(1, 1); }
     }
-    &.d-4 {
+    &.ch-4 {
       & > li:nth-child(2),
       & > li:nth-child(3),
       & > li:nth-child(4),
       & > li:nth-child(6) { transform: scale(1, 1); }
     }
-    &.d-5 {
+    &.ch-5 {
       & > li:nth-child(1),
       & > li:nth-child(2),
       & > li:nth-child(4),
       & > li:nth-child(6),
       & > li:nth-child(7) { transform: scale(1, 1); }
     }
-    &.d-6 {
+    &.ch-6 {
       & > li:nth-child(1),
       & > li:nth-child(2),
       & > li:nth-child(4),
@@ -165,12 +165,12 @@
       & > li:nth-child(6),
       & > li:nth-child(7) { transform: scale(1, 1); }
     }
-    &.d-7 {
+    &.ch-7 {
       & > li:nth-child(1),
       & > li:nth-child(3),
       & > li:nth-child(6) { transform: scale(1, 1); }
     }
-    &.d-8 {
+    &.ch-8 {
       & > li:nth-child(1),
       & > li:nth-child(2),
       & > li:nth-child(3),
@@ -178,28 +178,28 @@
       & > li:nth-child(6),
       & > li:nth-child(7) { transform: scale(1, 1); }
     }
-    &.d-9 {
+    &.ch-9 {
       & > li:nth-child(1),
       & > li:nth-child(2),
       & > li:nth-child(3),
       & > li:nth-child(6),
       & > li:nth-child(7) { transform: scale(1, 1); }
     }
-    &.d-minus {
+    &.ch-minus {
       & > li:nth-child(4) { transform: scale(1, 1); }
     }
-    &.d-colon {
+    &.ch-colon {
       & > li:nth-child(8),
       & > li:nth-child(9) { transform: scale(1, 1); }
     }
-    &.d-a {
+    &.ch-a {
       & > li:nth-child(1),
       & > li:nth-child(2),
       & > li:nth-child(3),
       & > li:nth-child(5),
       & > li:nth-child(6) { transform: scale(1, 1); }
     }
-    &.d-p {
+    &.ch-p {
       & > li:nth-child(1),
       & > li:nth-child(2),
       & > li:nth-child(3),
@@ -211,6 +211,6 @@
 
 
 // configurable
-.digital-clock > .digit {
+.digital-clock > .char {
   font-size: 5em;
 }

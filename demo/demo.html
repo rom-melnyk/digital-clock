@@ -1,11 +1,29 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="../bin/digital-clock.min.css">
-    <script src="../bin/digital-clock.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Digital clock</title>
+    <link rel="stylesheet" type="text/css" href="../bin/digital-clock.min.css">
+    <script type="application/javascript" src="../bin/digital-clock.min.js"></script>
+    <script type="application/javascript" src="./demo.js"></script>
 </head>
-<body>
-    <p>Here we are!</p>
+<body onload="runApp();">
+    <h1>Digital Clock</h1>
+    <h2>This is font for using in digital clock</h2>
+    <p>Git:</p>
+    <h2>Demo</h2>
+    <p>
+        <input type="radio" name="mode" id="mode-random" value="random" checked>
+        <label for="mode-random">random</label>
+        <input type="radio" name="mode" id="mode-clock" value="clock">
+        <label for="mode-clock">clock</label>
+        <input type="radio" name="mode" id="mode-input" value="user-input">
+        <label for="mode-input">input</label>
+        <input type="text" id="user-input" placeholder="Your text...">
+    </p>
+    <div class="digital-clock"></div>
 </body>
 </html>
-
