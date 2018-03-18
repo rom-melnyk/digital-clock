@@ -6,8 +6,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Digital clock</title>
+
     <link rel="stylesheet" type="text/css" href="../bin/digital-clock.min.css">
     <script type="application/javascript" src="../bin/digital-clock.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./demo.css">
     <script type="application/javascript" src="./demo.js"></script>
 </head>
 <body onload="runDemo();">
@@ -15,25 +18,24 @@
     <h2>This is font for using in digital clock</h2>
     <p>Git: <a href="https://github.com/rom-melnyk/digital-clock">https://github.com/rom-melnyk/digital-clock</a></p>
     <h2>Demo</h2>
-    <p>
-        <input type="radio" name="mode" id="mode-random" value="random" checked>
+    <div class="config">
+        <input type="radio" name="mode" id="mode-random" value="random">
         <label for="mode-random">random</label>
 
-        <input type="radio" name="mode" id="mode-clock" value="clock">
+        <input type="radio" name="mode" id="mode-clock" value="clock" checked>
         <label for="mode-clock">clock</label>
 
         <input type="radio" name="mode" id="mode-input" value="user-input">
-        <label for="mode-input">input</label>
-
         <input type="text" id="user-input" placeholder="Your text...">
-    </p>
-    <p>
-        <input type="range" min="1" max="10" value="5" id="font-size">
+
+        <br>
+
+        <input type="range" min="1" max="10" value="1" id="font-size">
         <label for="font-size">font size</label>
 
         <input type="color" value="#000" id="color">
         <label for="color">color</label>
-    </p>
-    <div class="digital-clock"></div>
+    </div>
+    <div class="digital-clock" style="text-align: center"></div>
 </body>
 </html>

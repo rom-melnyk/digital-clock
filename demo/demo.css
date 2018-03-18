@@ -1,0 +1,28 @@
+body {
+    font-family: "Open Sans", Tahoma, Arial, sans-serif;
+    font-size: 22px;
+}
+
+input {
+    display: inline-block;
+    padding-right: .5em;
+    vertical-align: -30%;
+}
+
+input[type=checkbox], input[type=radio] {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+input[type=text] {
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+label {
+    padding-right: 2em;
+}
+
+.config {
+    margin-bottom: 1em;
+}

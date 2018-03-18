@@ -7,7 +7,7 @@ function runDemo() {
     };
     let currentMode;
     let intervalId = null;
-    const AVAILABLE_CHARS = '0123456789-:ap';
+    const SUPPORTED_CHARS = DigitalClock.SUPPORTED_CHARS;
 
 
     const clock = new DigitalClock('.digital-clock');
@@ -43,7 +43,7 @@ function runDemo() {
         intervalId = setInterval(() => {
             let text = '';
             for (let i = 0; i < 10; i++) {
-                text += AVAILABLE_CHARS[ Math.round(Math.random() * AVAILABLE_CHARS.length) ];
+                text += SUPPORTED_CHARS[ Math.round(Math.random() * SUPPORTED_CHARS.length) ];
             }
             clock.setText(text);
         }, 500);
@@ -51,11 +51,20 @@ function runDemo() {
 
 
     function runClockMode() {
+        function toTwoDigits(x) {
+            return x < 10 ? `0${x}` : x;
+        }
+
         intervalId = setInterval(() => {
-            const date = new Date().toISOString() // E.g., 2018-03-16T14:34:50.517Z
-                .substr(11, 10)
-                .replace('.', '-');
-            clock.setText(date);
+            const date = new Date();
+            const h = date.getHours();
+            const m = date.getMinutes();
+            const s = date.getSeconds();
+            const ms = Math.floor(date.getMilliseconds() / 100); // 1/10 of second
+            const s2secSeparator = s % 2 ? ':' : ' ';
+
+            const text = toTwoDigits(h) + ':' + toTwoDigits(m) + s2secSeparator + toTwoDigits(s) + '.' + ms;
+            clock.setText(text);
         }, 100);
     }
 
