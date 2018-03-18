@@ -15,7 +15,7 @@ Constructor returning the instance of the clock. Accepts following params:
 Mind that clock container element gets decorated with CSS class `.digital-clock` so pay extra attention if this class is not used anywhere else.
 
 #### Constructor statics
-- `{string} DigitalClock.SUPORTED_CHARS` contains the list of all chars supported:
+- `{string} DigitalClock.SUPPORTED_CHARS` contains the list of all chars supported:
    - digits `0-9`,
    - hex digits `a-f`,
    - `p` (for am/am clock mark),
