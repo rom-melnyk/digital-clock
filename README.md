@@ -71,7 +71,7 @@ setInterval(() => {
 
 
 ## Demo
-Open `demo/demo.html` in browser.
+Open `demo/demo.html` in browser. Or check out [https://melnyk.site/post/5].
 
 
 
